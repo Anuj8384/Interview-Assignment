@@ -1,0 +1,9 @@
+
+  .form-group .required:after {
+    content: " *";
+      color: red;
+      font-weight: bold;
+  }
+  input {
+      border-radius: 10px;
+  }

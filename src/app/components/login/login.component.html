@@ -1,0 +1,71 @@
+<div class="container vh-100">
+    <div class="row justify-content-center h-100">
+        <div class="card my-auto shadow col-6">
+            <div class="card-body px-3">
+                <div class="text-center">
+                    <fa-icon [icon]="faLock" class="fa-3x"></fa-icon>
+                </div>
+                <div class="text-center">
+                    <h2>Login</h2>
+                </div>
+                <p style="color: lightslategray; text-align: center;">Please enter your login details</p>
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" #myform="ngForm">
+                    <div class="form-group">
+                        <label for="emailid" class="form-label required">Email ID</label>
+                        <input type="email" id="email" placeholder="Email" class="form-control" formControlName="email"
+                            name="email" />
+                        <div *ngIf="rc.email.invalid && (rc.email.dirty || rc.email.touched)"
+                            class="alert alert-danger">
+                            <!-- && myform.submitted" -->
+
+                            <div *ngIf="rc.email.errors?.['required']">
+                                <small> email is required.</small>
+                            </div>
+                            <div *ngIf="rc.email.errors?.['email']">
+                                <small>email is invalid.</small>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="form-label required">Password</label>
+                        <div class="input-group-append">
+
+                        <input  [type]="fieldTextType ? 'text' : 'password'" id="password" placeholder="Password" class="form-control"
+                            formControlName="password" name="password" />
+
+                            <a class="input-group-text" (click)="togglePwdField()">
+                                <fa-icon *ngIf="fieldTextType"  [icon]="faEye" class="fa"></fa-icon>
+                                <fa-icon *ngIf="!fieldTextType" [icon]="faEyeSlash" class="fa"></fa-icon>
+                            </a>
+                         </div>  
+
+                        <div *ngIf="rc.password.invalid && (rc.password.dirty || rc.password.touched)"
+                            class="alert alert-danger">
+
+                            <div *ngIf="rc.password.errors?.['required']">
+                                <small>password is required.</small>
+                            </div>
+
+                            <div *ngIf="rc.password.errors?.['pattern']">
+                                <small>
+                                    <ul class="mb-0">
+                                        <li>input field (8-20 characters) </li>
+                                        <li>must contain letters (upper and lower case)</li>
+                                        <li>at least 1 number and 1 special character)</li>
+                                    </ul>
+                                </small>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100" value="Login" name="">Login</button>
+                </form>
+                <div class="alert alert-danger" *ngIf="notMatched" >
+                    <span>User name or password not match!</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
