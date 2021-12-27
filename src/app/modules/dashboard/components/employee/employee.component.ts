@@ -31,7 +31,8 @@ export class EmployeeComponent implements OnInit {
     })
   }
 
-  back() {
+  parentBack() {
+    console.log("back")
     this.view = true
   }
   viewEmployee(user:any){

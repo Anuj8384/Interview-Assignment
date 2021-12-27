@@ -1,0 +1,62 @@
+<div class="container py-2" *ngIf="view">
+
+    <div class="card shadow mx-2">
+        <div class="table-responsive">
+            <table class="table">
+                <tr style="background-color: rgba(12, 12, 75, 0.938); color: whitesmoke;">
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>User Name</th>
+                    <th>Company Name</th>
+                    <th>Website</th>
+                    <th>Action</th>
+                </tr>
+                <tr *ngFor="let d of employeeData">
+                    <td>{{d?.id}}</td>
+                    <td>{{d?.name}}</td>
+                    <td>{{d?.email}}</td>
+                    <td>{{d?.username}}</td>
+                    <td>{{d?.company.name}}</td>
+                    <td>{{d?.website}}</td>
+                    <td>
+                        <a (click)="viewEmployee(d)" class="text-primary ">
+                            <fa-icon [icon]="faEye"></fa-icon>
+                        </a>
+                        <a class="text-info px-2">
+                            <fa-icon [icon]="faPen"></fa-icon>
+                        </a>
+                        <a class="text-danger ">
+                            <fa-icon [icon]="faTrash"></fa-icon>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- 
+ -->
+<div class="container py-2" *ngIf="!view">
+    <div class="col-12">
+        <div class="ustify-content-between">
+            <div class="card shadow mt-2">
+                <app-employee-list [employee]="employee" (parentBack)="parentBack()"></app-employee-list>
+               
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<!-- email: "Sincere@april.biz"
+id: 1
+name: "Leanne Graham"
+phone: "1-770-736-8031 x56442"
+username: "Bret"
+website: -->
